@@ -1,0 +1,39 @@
+{
+  "schema": "bsv-app",
+  "schemaVersion": "1.0",
+  "topicManagers": {
+    "tm_template": "./backend/src/topic-managers/TemplateTopicManager.ts"
+  },
+  "lookupServices": {
+    "ls_template": {
+      "serviceFactory": "./backend/src/lookup-services/TemplateLookupServiceFactory.ts",
+      "hydrateWith": "mongo"
+    }
+  },
+  "frontend": {
+    "language": "react",
+    "sourceDirectory": "./frontend"
+  },
+  "contracts": {},
+  "configs": [
+    {
+      "name": "Local LARS",
+      "network": "mainnet",
+      "provider": "LARS",
+      "run": [
+        "backend",
+        "frontend"
+      ]
+    },
+    {
+      "name": "publicActivities",
+      "provider": "CARS",
+      "CARSCloudURL": "https://cars.babbage.systems",
+      "projectID": "e4a8b9c9360753a157dc3d5c44917a28",
+      "network": "mainnet",
+      "deploy": [
+        "backend"
+      ]
+    }
+  ]
+}
